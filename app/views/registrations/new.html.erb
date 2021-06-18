@@ -1,0 +1,14 @@
+<h1>sign up</h1>
+
+<%= form_with(model: @user, url: sign_up_path) do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
+
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit 'Sign Up' %>
+<% end %>
