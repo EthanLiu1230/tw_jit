@@ -3,7 +3,7 @@
 <div class="flex items-center justify-between">
   <h1 class="flex-1 text-3xl font-bold">
   <span>
-  <%= @q.result.count %>
+  <%= policy_scope(@q.result).count %>
   </span>
     Articles
   </h1>

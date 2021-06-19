@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   # GET /articles
   def index
     @q = Article.ransack(params[:q])
-    @articles = @q.result.page params[:page]
+    @articles = policy_scope(@q.result).page params[:page]
   end
 
   # GET /articles/1
@@ -14,6 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    authorize @article
   end
 
   # GET /articles/1/edit
@@ -51,10 +54,13 @@ class ArticlesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_article
     @article = Article.find(params[:id])
+    authorize @article
   end
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :is_published, :publish_date, :content)
+    p = params.require(:article).permit(:title, :is_published, :publish_date, :content)
+    p.merge(author: Current.user) if Current.user
+    p
   end
 end

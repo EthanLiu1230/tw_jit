@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "kaminari", "~> 1.2"
 
 gem "ransack", "~> 2.4"
+
+gem "pundit", "~> 2.1"
