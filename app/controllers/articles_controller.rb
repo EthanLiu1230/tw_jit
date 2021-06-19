@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   def index
     @q = Article.ransack(params[:q])
     @articles = @q.result.page params[:page]
-    # @articles = Article.page params[:page]
   end
 
   # GET /articles/1

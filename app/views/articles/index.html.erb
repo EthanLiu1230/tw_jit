@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="flex items-center">
+<div class="flex items-center justify-between">
   <h1 class="flex-1 text-3xl font-bold">
   <span>
   <%= @q.result.count %>
@@ -8,12 +8,13 @@
     Articles
   </h1>
 
-  <%= search_form_for(@q, class: 'form-control my-2') do |f| %>
+  <%= search_form_for(@q, class: 'form-control my-2 flex-1') do |f| %>
     <div class="relative w-full">
       <%= f.search_field :title_cont, class: 'w-full pr-16 input input-primary input-bordered' %>
-      <%= f.submit name: '', class: 'absolute right-0 top-0 rounded-l-none btn btn-primary' %>
+      <%= f.submit 'search', name: '', class: 'absolute right-0 top-0 rounded-l-none btn btn-primary' %>
     </div>
   <% end %>
+  <%= link_to 'New', new_article_path, class: 'btn btn-outline btn-secondary ml-2' %>
 </div>
 
 <div class="overflow-x-auto">
@@ -32,7 +33,7 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.author.name %></td>
-        <td><%= article.publish_date %></td>
+        <td><%= article.publish_date.to_date %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,8 +42,7 @@
     </tbody>
   </table>
 </div>
-<%= paginate @articles %>
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<%= paginate @articles %>
