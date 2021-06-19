@@ -1,14 +1,29 @@
-<h1>sign up</h1>
-
-<%= form_with(model: @user, url: sign_up_path) do |f| %>
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |message| %>
-      <div><%= message %></div>
+<div class="flex justify-center items-center w-screen h-screen bg-gray-100">
+  <%= form_with(model: @user, url: sign_up_path, class: 'p-10 bg-white rounded flex justify-center items-center flex-col shadow-md') do |f| %>
+    <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit 'Sign Up' %>
-<% end %>
+    <div class="form-control">
+      <label class="label">
+        <%= f.label :email, class: 'label-text' %>
+      </label>
+      <%= f.text_field :email, placeholder: 'email', class: 'input input-bordered' %>
+    </div>
+    <div class="form-control">
+      <label class="label">
+        <%= f.label :password, class: 'label-text' %>
+      </label>
+      <%= f.password_field :password, placeholder: 'password', class: 'input input-bordered' %>
+    </div>
+    <div class="form-control">
+      <label class="label">
+        <%= f.label :confirm_password, class: 'label-text' %>
+      </label>
+      <%= f.password_field :password_confirmation, placeholder: 'password', class: 'input input-bordered' %>
+    </div>
+    <%= f.submit 'Sign Up', class: 'btn btn-ghost rounded-btn btn-block mt-6' %>
+  <% end %>
+</div>
