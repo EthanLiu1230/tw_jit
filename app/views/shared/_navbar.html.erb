@@ -1,0 +1,28 @@
+<div class="navbar mb-2 bg-base-300 rounded-box">
+  <div class="flex-1 px-2 lg:flex-none">
+    <a class="text-lg font-bold">
+      Ekohe
+    </a>
+  </div>
+  <div class="flex justify-end flex-1 px-2">
+    <div class="flex">
+      <% unless Current.user %>
+        <%= button_to 'sign up', sign_up_path, method: :get, class: 'btn btn-ghost rounded-btn' %>
+        <%= button_to 'log in', log_in_path, method: :get, class: 'btn rounded-btn' %>
+      <% end %>
+      <% if Current.user %>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" class="btn btn-ghost rounded-btn">
+            <%= Current.user.email %>
+          </div>
+          <ul class="shadow menu dropdown-content bg-base-100 rounded-box w-52">
+            <li>
+              <%= link_to 'Logout', log_out_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
