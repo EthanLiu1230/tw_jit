@@ -11,5 +11,5 @@ ethan = User.create(email: 'ethan@test.com', password: 'asas')
 
 # ==> articles
 50.times do
-  FactoryBot.create(:article)
+  FactoryBot.create(:article, author: ethan)
 end
