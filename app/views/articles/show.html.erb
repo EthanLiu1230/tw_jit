@@ -1,24 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Is published:</strong>
-  <%= @article.is_published %>
-</p>
-
-<p>
-  <strong>Publish date:</strong>
-  <%= @article.publish_date %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
+<section class="font-sans container m-auto flex flex-col py-8 max-w-xl text-center px-6">
+  <label class="text-sm uppercase">
+    <%= @article.publish_date.to_date %>
+  </label>
+  <h1 class="my-8 max-w-full m-auto text-3xl md:text-4xl lg:text-5xl font-medium">
+    <%= @article.title %>
+  </h1>
+  <p class="mt-1 lg:mt-4 max-w-lg m-auto leading-loose mb-6 text-left">
+    <%= @article.content %>
+  </p>
+</section>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
