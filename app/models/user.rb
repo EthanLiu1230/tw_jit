@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :articles, foreign_key: 'author_id', dependent: :delete_all
 
   def name
-    email.split('@')[0].capitalize
+    email.split('@')[0]
   end
 end
