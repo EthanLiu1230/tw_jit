@@ -2,7 +2,7 @@
   <% if article.errors.any? %>
     <div class="alert alert-error">
       <div class="flex-1">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current"><!----> <!----> <!----> <!---->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="mx-2 w-6 h-6 stroke-current"><!----> <!----> <!----> <!---->
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!---->
         </svg>
         <label>
@@ -25,21 +25,23 @@
     <%= form.text_field :title, placeholder: 'title', class: 'input input-bordered' %>
   </div>
 
-  <div class="form-control mt-4">
-    <label class="cursor-pointer label flex">
-      <%= form.label :is_published, class: 'label-text' %>
-      <div>
-        <%= form.check_box :is_published, class: 'checkbox' %>
-        <span class="checkbox-mark"></span>
-      </div>
-    </label>
+  <div class="my-2 max-w-md card">
+    <div class="form-control">
+      <label class="cursor-pointer label">
+        <%= form.label :is_published, class: 'label-text' %>
+        <div>
+          <%= form.check_box :is_published, class: 'toggle toggle-primary' %>
+          <span class="toggle-mark"></span>
+        </div>
+      </label>
+    </div>
   </div>
 
-  <div class="flex justify-between my-6">
-    <%= form.label :publish_date, class: 'label-text' %>
-    <div class="flex justify-between">
-      <%= form.date_select :publish_date %>
-    </div>
+  <div class="form-control">
+    <label class="label">
+      <%= form.label :publish_date, class: 'label-text' %>
+    </label>
+    <%= form.text_field :publish_date, class: 'input input-bordered', disabled: true %>
   </div>
 
   <div class="form-control">
