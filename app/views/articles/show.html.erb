@@ -1,17 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<section class="font-sans container m-auto flex flex-col py-8 max-w-xl text-center px-6">
+<section class="font-sans flex flex-col py-8 w-full text-center px-6">
   <label class="text-sm uppercase">
     <%= @article.publish_date.to_date %>
   </label>
   <h1 class="my-8 max-w-full m-auto text-3xl md:text-4xl lg:text-5xl font-medium">
     <%= @article.title %>
   </h1>
-  <p class="mt-1 lg:mt-4 max-w-lg m-auto leading-loose mb-6 text-left">
+  <p class="mt-1 lg:mt-4 m-auto leading-loose mb-6">
     <%= @article.content %>
   </p>
 </section>
 
-<%= link_to 'Edit', edit_article_path(@article) if policy(@article).update? %> |
-<%= link_to 'Delete', article_path(@article), method: :delete if policy(@article).destroy? %> |
-<%= link_to 'Back', articles_path %>
+<div class="flex gap-1 mx-2">
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm btn-outline' if policy(@article).update? %>
+    <%= link_to 'Delete', article_path(@article), method: :delete, class: 'btn btn-sm btn-outline' if policy(@article).destroy? %>
+  </div>
+  <%= link_to 'Back', articles_path, class: 'btn btn-ghost btn-sm' %>
+</div>
