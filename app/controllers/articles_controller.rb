@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @article.author = current_user
     authorize @article
   end
 
@@ -26,6 +27,8 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
+    @article.author = current_user
+    authorize @article
 
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -59,8 +62,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    p = params.require(:article).permit(:title, :is_published, :publish_date, :content)
-    p.merge(author: Current.user) if Current.user
-    p
+    params.require(:article).permit(:title, :is_published, :publish_date, :content)
   end
 end
