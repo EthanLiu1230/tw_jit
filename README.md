@@ -1,24 +1,13 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```shell
+bundle
+```
 
-Things you may want to cover:
+```shell
+yarn install
+```
 
-* Ruby version
+# Documentation
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+See './Ekohe Interview Pack Doc.md'
