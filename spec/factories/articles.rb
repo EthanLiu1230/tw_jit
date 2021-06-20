@@ -3,6 +3,6 @@ FactoryBot.define do
     title { Faker::Lorem.sentence }
     is_published { Faker::Boolean.boolean }
     publish_date { Faker::Date.in_date_period }
-    content { Faker::Lorem.paragraph }
+    content { Faker::Lorem.paragraph(sentence_count: 100) }
   end
 end

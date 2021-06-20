@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    cnt = @article.view_count + 1
+    @article.update_attribute 'view_count', cnt
   end
 
   # GET /articles/new
