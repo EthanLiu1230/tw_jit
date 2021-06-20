@@ -7,9 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # ==> users
-ethan = User.create(email: 'ethan@test.com', password: 'asas')
+ethan = User.create(email: 'ethan.liu@test.com', password: 'asas')
+harry = User.create(email: 'harry.potter@test.com', password: 'asas')
+jack = User.create(email: 'jack.sparrow@test.com', password: 'asas')
 
 # ==> articles
-50.times do
+20.times do
   FactoryBot.create(:article, author: ethan)
+  FactoryBot.create(:article, author: harry)
+  FactoryBot.create(:article, author: jack)
 end
